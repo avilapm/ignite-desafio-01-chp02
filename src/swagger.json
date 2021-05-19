@@ -1,0 +1,229 @@
+{
+  "openapi":"3.0.0",
+  "info":{
+    "title":"Challenge 2 - Ignite",
+    "description":"This is an API Challenge 2 - Ignite",
+    "version":"1.0.0",
+    "contact":{
+      "email":"avilapm@gmail.com"
+    }
+  },
+  "paths":{
+    "/users":{
+      "post":{
+        "tags":[
+          "Users"
+        ],
+        "summary":"Create a User",
+        "description":"Create a new User",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type":"object",
+                "properties":{
+                  "name":{
+                    "type":"string"
+                  },
+                  "email":{
+                    "type":"string"
+                  }
+                },
+                "example":{
+                  "name":"User name sample",
+                  "email":"User email sample"
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description":"Created"
+          },
+          "400":{
+            "description":"User already exists !"
+          }
+        }
+      },
+      "get":{
+        "tags":[
+          "Users"
+        ],
+        "summary":"List all users",
+        "description":"List all users",
+        "responses":{
+          "200":{
+            "description":"Success",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "type":"object",
+                    "properties":{
+                      "name":{
+                        "type":"string"
+                      },
+                      "email":{
+                        "type":"string"
+                      },
+                       "admin":{
+                        "type":"boolean"
+                      },
+                       "create_at":{
+                        "type":"string"
+                      }, 
+                       "update_at":{
+                        "type":"string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description":"User not exists"
+          }
+        },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "header",
+          "description": "ID of User Admin",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+      }
+      
+      
+     
+    },
+    "/users/{user_id}/admin":{
+    "patch":{
+        "tags":[
+          "Users"
+        ],
+        "summary":"Turn user an admin",
+        "description":"Turn user an admin",
+        "responses":{
+          "200":{
+            "description":"Success",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "type":"object",
+                    "properties":{
+                      "name":{
+                        "type":"string"
+                      },
+                      "email":{
+                        "type":"string"
+                      },
+                       "admin":{
+                        "type":"boolean"
+                      },
+                       "create_at":{
+                        "type":"string"
+                      }, 
+                       "update_at":{
+                        "type":"string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description":"User not exists"
+          }
+        },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "description": "ID of User Admin",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+      }
+    },
+    "/users/{user_id}":{
+    "get":{
+        "tags":[
+          "Users"
+        ],
+        "summary":"Show user profile",
+        "description":"Show user profile",
+        "responses":{
+          "200":{
+            "description":"Success",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "type":"object",
+                    "properties":{
+                      "name":{
+                        "type":"string"
+                      },
+                      "email":{
+                        "type":"string"
+                      },
+                       "admin":{
+                        "type":"boolean"
+                      },
+                       "create_at":{
+                        "type":"string"
+                      }, 
+                       "update_at":{
+                        "type":"string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description":"User not exists"
+          }
+        },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "description": "ID of User Admin",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+      }
+    }
+  }  
+}
